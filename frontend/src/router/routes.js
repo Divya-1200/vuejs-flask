@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Frontview from './src/views/Frontview.vue';
+import Frontview from '../components/Frontview.vue';
 
 
 Vue.use(VueRouter);
@@ -10,7 +10,7 @@ export default new VueRouter({
     routes:[
         {
             path:'/',
-            name:'frontview',
+            name:'Frontview',
             component: Frontview,
         },
 

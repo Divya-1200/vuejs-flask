@@ -1,14 +1,7 @@
 <template>
 <div id="app">
-  <b-navbar toggleable type="dark" variant="dark">
-    <b-navbar-brand class="nav-bar">Featurepreneur</b-navbar-brand>
-    <b-navbar-nav class=ml-auto>
-        <b-nav-item class="link" href="/data">View Data</b-nav-item>
-    </b-navbar-nav>
-  </b-navbar>
 
-  <div >
-    <h3> LinkedIn Data Collection</h3>
+ <h3>Enter your Data</h3>
     <b-form @submit="submit">
       <b-form-group id="input-group-1" label="Name" label-for="input-1">
         <b-form-textarea
@@ -21,12 +14,12 @@
         ></b-form-textarea>
       </b-form-group>
 
-      <b-form-group id="input-group-2" label="About" label-for="input-2">
+      <b-form-group id="input-group-2" label="Department" label-for="input-2">
         <b-form-textarea
           id="input-2"
           type="text"
           v-model="dataentry.about"
-          placeholder="Type About"
+          placeholder="Type your Department here"
           rows=8
         ></b-form-textarea>
       </b-form-group>
@@ -35,11 +28,37 @@
   </b-form>
     
   </div>
-</div>
+
 </template>
-
 <script>
-
+import axios from 'axios';
+export default{
+ 
+  data(){
+    return {
+       dataentry:{
+        name:"",
+        about:"",
+      },
+    };
+  },
+  methods:{
+    submit:function(){
+      const path = 'http://127.0.0.1:5000/dataentry'
+      axios.post(path, {
+        name:this.dataentry.name,
+        about:this.dataentry.about,
+        }
+      )
+      .then(response => {
+        console.log(response);
+      })
+      .catch(err =>{
+        console.log(err);
+      });
+    },
+  }
+}
 </script>
 
 <style>
