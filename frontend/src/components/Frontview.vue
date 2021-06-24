@@ -18,9 +18,9 @@
         <b-form-textarea
           id="input-2"
           type="text"
-          v-model="dataentry.about"
+          v-model="dataentry.department"
           placeholder="Type your Department here"
-          rows=8
+          
         ></b-form-textarea>
       </b-form-group>
     <b-button pill v-on:Click="submit" id="button-1" type="submit" variant="dark">Submit</b-button>
@@ -38,7 +38,7 @@ export default{
     return {
        dataentry:{
         name:"",
-        about:"",
+        department:"",
       },
     };
   },
@@ -47,7 +47,7 @@ export default{
       const path = 'http://127.0.0.1:5000/dataentry'
       axios.post(path, {
         name:this.dataentry.name,
-        about:this.dataentry.about,
+        department:this.dataentry.department,
         }
       )
       .then(response => {
